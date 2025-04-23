@@ -1,0 +1,8 @@
+@import "global/normalize.css";
+@import "global/fonts.css";
+@import "global/setup.css";
+
+@import "blocks/header.css";
+@import "blocks/hero.css";
+@import "blocks/contacts.css";
+@import "blocks/footer.css";

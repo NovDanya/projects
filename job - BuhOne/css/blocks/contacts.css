@@ -1,0 +1,279 @@
+.contacts {
+  padding: 120px 0 140px;
+  background: url('../../images/contacts.png') no-repeat center;
+  background-size: cover;
+  min-height: 660px;
+  border-top: 2px solid var(--white);
+}
+
+.contacts__container {
+  justify-content: space-between;
+}
+
+.contacts__info-left {
+  max-width: 50%;
+}
+
+.contacts__title {
+  margin: 0;
+  margin-bottom: 60px;
+  font-family: var(--second-family);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 145%;
+  color: var(--white);
+}
+
+.contacts__text {
+  margin-bottom: 80px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 138%;
+  color: var(--white);
+}
+
+.communicate {
+  gap: 40px;
+}
+
+.communicate__contact {
+  gap: 15px;
+}
+
+.communicate__contact .contact {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 138%;
+  color: var(--white);
+}
+
+.form__top {
+  margin-bottom: 35px;
+  gap: 30px;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 15px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 138%;
+  color: var(--white);
+}
+
+.form__input {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 138%;
+  color: #bdbdbd;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--white);
+}
+
+.form__textarea {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 138%;
+  color: #bdbdbd;
+  width: 100%;
+  min-height: 136px;
+  resize: vertical;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--white);
+}
+
+.form__textarea,
+.form__input:focus {
+  outline: none;
+}
+
+.form__bottom {
+  margin-top: 50px;
+  text-align: right;
+}
+
+.form__btn {
+  padding: 18px 35px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 138%;
+  text-align: center;
+  color: var(--white);
+  background: var(--accent);
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup__content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup__close {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: red;
+}
+
+.popup__message {
+  margin: 0;
+  font-size: 20px;
+  color: green;
+}
+
+.error-message {
+  display: none;
+  font-size: 14px;
+  margin-top: 5px;
+  color: red;
+}
+
+.form__input.error,
+.form__textarea.error {
+  border-color: red;
+}
+
+@media (max-width: 1024px) {
+  .contacts__container {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .contacts__info-left {
+    max-width: 100%;
+  }
+
+  .communicate {
+    justify-content: center;
+  }
+
+  .form {
+    margin: 0 auto;
+  }
+
+  .form__bottom {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .contacts {
+    padding: 60px 0 80px;
+    min-height: auto;
+  }
+
+  .contacts__title {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  .contacts__text {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .communicate {
+    gap: 20px;
+  }
+
+  .communicate__contact .contact {
+    font-size: 18px;
+  }
+
+  .form__top {
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .form__input,
+  .form__textarea {
+    font-size: 18px;
+  }
+
+  .form__bottom {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  .contacts__title {
+    font-size: 28px;
+  }
+
+  .contacts__text {
+    font-size: 14px;
+  }
+
+  .communicate {
+    flex-direction: column;
+  }
+
+  .communicate__contact .contact {
+    font-size: 16px;
+  }
+
+  .form__label {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .form__input,
+  .form__textarea {
+    font-size: 16px;
+  }
+
+  .form__btn {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 374px) {
+  .contacts__title {
+    font-size: 24px;
+  }
+
+  .communicate__contact .contact {
+    font-size: 14px;
+  }
+
+  .form {
+    margin: 0;
+  }
+
+  .form__input {
+    width: 100%;
+  }
+
+  .form__top {
+    flex-direction: column;
+  }
+}
