@@ -35,9 +35,9 @@ database/seeders/BookSeeder.php — сидер для 50 книг
       DB_DATABASE=library
       DB_USERNAME=ваш_пользователь
       DB_PASSWORD=ваш_пароль
-5. Запустите миграции и заполните БД демо-данными:
+6. Запустите миграции и заполните БД демо-данными:
   php artisan migrate --seed
-6. Запустить локальный сервер:
+7. Запустить локальный сервер:
   php artisan serve
 
 
