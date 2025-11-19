@@ -43,5 +43,5 @@ RESTful API для управления книгами. Тестовое зад�
 
 ## Тестировка Через Postman
 1. В Postman нажмите ctrl+o
-2. Импортируйте файл library.postman_collection.json (путь к нему projects/backend/Library_On_Laravel)
+2. Импортируйте файл `library.postman_collection.json` (путь к нему projects/backend/Library_On_Laravel)
 3. Протестируйте запросы
