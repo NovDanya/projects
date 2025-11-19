@@ -20,11 +20,11 @@ RESTful API для управления книгами. Тестовое зад�
 
 ## Установка и запуск
 1. Клонируйте репозиторий:
-  git clone https://github.com/NovDanya/projects.git
+  `git clone https://github.com/NovDanya/projects.git`
 2. Перейдите в папку с проектом:
-  cd projects\backend\Library_On_Laravel\library-api
+  `cd projects\backend\Library_On_Laravel\library-api`
 3. Установите зависимости:
-  composer install
+  `composer install`
 4. Настройте базу данных:
     - Создайте пустую базу данных MySQL (например, library)
     - Скопируйте .env.example в .env
@@ -36,9 +36,9 @@ RESTful API для управления книгами. Тестовое зад�
       -  `DB_USERNAME=ваш_пользователь`
       -  `DB_PASSWORD=ваш_пароль`
 6. Запустите миграции и заполните БД демо-данными:
-  php artisan migrate --seed
+  `php artisan migrate --seed`
 7. Запустить локальный сервер:
-  php artisan serve
+  `php artisan serve`
 
 
 ## Тестировка Через Postman
