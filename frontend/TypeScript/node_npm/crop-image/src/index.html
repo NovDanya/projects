@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css" rel="stylesheet">
+    <script type="module" src="main.js" defer></script>
+    <title>Photo Cropper</title>
+</head>
+<body>
+    <div id="app">
+        <p>You can crop image and download after</p>
+        <div class="buttons-group">
+            <input type="file" id="image-upload" style="display:none;" accept="image/*" />
+            <div class="cropped-container" style="display:none;">
+                <img src="#" alt="Cropped image" id="image-cropped">
+            </div>
+            <button id="upload-button">Upload image</button>
+            <button id="crop-button" disabled>Crop image</button>
+            <button id="download-button" disabled>Download new image</button>
+        </div>
+        <div class="image-wrapper">
+            <img id="displayed-image" src="#" alt="Upload an image">
+        </div>
+    </div>
+</body>
+</html>

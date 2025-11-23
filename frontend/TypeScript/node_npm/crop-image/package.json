@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "name": "crop_photos",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "build": "parcel build",
+    "dev": "parcel src/index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "cropperjs": "^1.6.2"
+  }
+}
