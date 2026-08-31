@@ -1,4 +1,4 @@
-# Library API (Laravel 12)
+# Library API (Laravel 8+)
 RESTful API для управления книгами. Тестовое задание.
 
 
