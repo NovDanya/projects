@@ -92,8 +92,8 @@ API v2 (Books, Authors, Genres)
 🧪 Тестирование через Postman
 Откройте Postman.
 Нажмите кнопку Import в левом верхнем углу.
-Перетащите файл library_API.postman_collection.json или выберите его через Upload Files.
-В коллекции уже настроена переменная base_url = http://127.0.0.1:8000.
+Перетащите файл `library_API.postman_collection.json` или выберите его через Upload Files.
+В коллекции уже настроена переменная `base_url = http://127.0.0.1:8000`.
 Для запросов POST и PUT во вкладке Body уже выбран формат raw → JSON.
 
 Примеры тел запросов
@@ -117,5 +117,4 @@ API v2 (Books, Authors, Genres)
     "description": "Книги о будущем и технологиях"
 }`
 
-👤 Автор - Данил (NovDanya)
-Fullstack Developer
+👤 Автор - Данил (NovDanya) - Fullstack Developer
