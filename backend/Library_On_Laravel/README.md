@@ -22,8 +22,8 @@ RESTful API для управления библиотекой (книги, ав
 ## 🚀 Установка и запуск
 
 ### 1. Клонируйте репозиторий
-`git clone https://github.com/NovDanya/projects.git`
-`cd projects/backend/Library_On_Laravel/library-api`
+- `git clone https://github.com/NovDanya/projects.git`
+- `cd projects/backend/Library_On_Laravel/library-api`
 
 ### 2. Установите зависимости PHP
 `composer install`
@@ -33,12 +33,12 @@ RESTful API для управления библиотекой (книги, ав
 `cp .env.example .env`
 
 Откройте файл .env и настройте подключение к вашей базе данных MySQL:
-`DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=books
-DB_USERNAME=root
-DB_PASSWORD=`
+- `DB_CONNECTION=mysql`
+- `DB_HOST=127.0.0.1`
+- `DB_PORT=3306`
+- `DB_DATABASE=books`
+- `DB_USERNAME=root`
+- `DB_PASSWORD=`
 
 ### 4. Сгенерируйте ключ приложения
 `php artisan key:generate`
