@@ -66,28 +66,28 @@ API v1 (Books)
 
 API v2 (Books, Authors, Genres)
 Метод	URL	Описание
-GET	/api/v2/books/index	Список книг
-POST	/api/v2/books/store	Создание книги
-GET	/api/v2/books/show/{id}	Получить книгу по ID
-PUT	/api/v2/books/update/{id}	Обновить книгу
-DELETE	/api/v2/books/destroy/{id}	Удалить книгу
+- `GET	/api/v2/books/index`	Список книг
+- `POST	/api/v2/books/store`	Создание книги
+- `GET	/api/v2/books/show/{id}`	Получить книгу по ID
+- `PUT	/api/v2/books/update/{id}`	Обновить книгу
+- `DELETE	/api/v2/books/destroy/{id}`	Удалить книгу
 
-GET	/api/v2/authors/index	Список авторов
-POST	/api/v2/authors/store	Создание автора
-GET	/api/v2/authors/show/{id}	Получить автора по ID
-PUT	/api/v2/authors/update/{id}	Обновить автора
-DELETE	/api/v2/authors/destroy/{id}	Удалить автора
-GET	/api/v2/authors/{id}/books	Получить все книги конкретного автора
+- `GET	/api/v2/authors/index`	Список авторов
+- `POST	/api/v2/authors/store`	Создание автора
+- `GET	/api/v2/authors/show/{id}`	Получить автора по ID
+- `PUT	/api/v2/authors/update/{id}`	Обновить автора
+- `DELETE	/api/v2/authors/destroy/{id}`	Удалить автора
+- `GET	/api/v2/authors/{id}/books`	Получить все книги конкретного автора
 
-GET	/api/v2/genres/index	Список жанров
-POST	/api/v2/genres/store	Создание жанра
-GET	/api/v2/genres/show/{id}	Получить жанр по ID
-PUT	/api/v2/genres/update/{id}	Обновить жанр
-DELETE	/api/v2/genres/destroy/{id}	Удалить жанр
-GET	/api/v2/genres/{id}/books	Получить все книги конкретного жанра
+- `GET	/api/v2/genres/index`	Список жанров
+- `POST	/api/v2/genres/store`	Создание жанра
+- `GET	/api/v2/genres/show/{id}`	Получить жанр по ID
+- `PUT	/api/v2/genres/update/{id}`	Обновить жанр
+- `DELETE	/api/v2/genres/destroy/{id}`	Удалить жанр
+- `GET	/api/v2/genres/{id}/books`	Получить все книги конкретного жанра
 
 Полный список маршрутов всегда можно проверить командой:
-php artisan route:list
+`php artisan route:list`
 
 🧪 Тестирование через Postman
 Откройте Postman.
@@ -97,25 +97,25 @@ php artisan route:list
 Для запросов POST и PUT во вкладке Body уже выбран формат raw → JSON.
 
 Примеры тел запросов
-Создание книги
-{
+- Создание книги
+`{
     "title": "Название книги",
     "author_id": 1,
     "published_year": 2023,
     "genre_id": 2
-}
-Создание автора
-{
+}`
+- Создание автора
+`{
     "name": "Лев Толстой",
     "country": "Россия",
     "birth_date": "1828-09-09",
     "biography": "Великий русский писатель"
-}
-Создание жанра
-{
+}`
+- Создание жанра
+`{
     "name": "Фантастика",
     "description": "Книги о будущем и технологиях"
-}
+}`
 
 👤 Автор - Данил (NovDanya)
 Fullstack Developer
