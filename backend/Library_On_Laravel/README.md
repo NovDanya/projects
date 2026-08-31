@@ -58,11 +58,11 @@ http://127.0.0.1:8000
 
 API v1 (Books)
 Метод	URL	Описание
-`GET	/api/v1/books`	Получить список книг (с пагинацией)
-`POST	/api/v1/books`	Создать новую книгу
-`GET	/api/v1/books/{book}`	Получить информацию о книге по ID
-`PUT	/api/v1/books/{book}`	Полностью обновить данные книги
-`DELETE	/api/v1/books/{book}`	Удалить книгу
+- `GET	/api/v1/books`	Получить список книг (с пагинацией)
+- `POST	/api/v1/books`	Создать новую книгу
+- `GET	/api/v1/books/{book}`	Получить информацию о книге по ID
+- `PUT	/api/v1/books/{book}`	Полностью обновить данные книги
+- `DELETE	/api/v1/books/{book}`	Удалить книгу
 
 API v2 (Books, Authors, Genres)
 Метод	URL	Описание
