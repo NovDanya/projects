@@ -1,0 +1,475 @@
+{
+  "info": {
+    "_postman_id": "f8fe4f0f-ef19-44df-9016-2549b5420fc7",
+    "name": "Library_API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "47642016",
+    "_collection_link": "https://go.postman.co/collection/47642016-f8fe4f0f-ef19-44df-9016-2549b5420fc7?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Список книг",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/books/index/",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "books",
+                "index",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Вывод одной книги",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/books/show/53",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "books",
+                "show",
+                "53"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Создание книги",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"The Master and Margarita\",\r\n  \"author\": \"Mikhail Bulgakov\",\r\n  \"published_year\": 1967,\r\n  \"genre\": \"Novel\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/v2/books/store",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "books",
+                "store"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Обновление книги",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Обновлённое\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/v2/books/update/5",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "books",
+                "update",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Удаление книги",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/books/destroy/3",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "books",
+                "destroy",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Authors",
+      "item": [
+        {
+          "name": "Список авторов",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/authors/index",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "authors",
+                "index"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Вывод одного автора",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/authors/show/1",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "authors",
+                "show",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Все книги автора",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/authors/25/books",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "authors",
+                "25",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Создание автора",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\t\r\n{\"name\": \"Лев Толстой\", \"country\": \"Россия\", \"birth_date\": \"1828-09-09\", \"biography\": \"Великий писатель.\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/v2/authors/store",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "authors",
+                "store"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Обновление автора",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Л.Н. Толстой\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/v2/authors/update/1",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "authors",
+                "update",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Удаление автора",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/authors/destroy/1",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "authors",
+                "destroy",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Genres",
+      "item": [
+        {
+          "name": "Список жанров",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/genres/index",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "genres",
+                "index"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Вывод одного жанра",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/genres/show/3",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "genres",
+                "show",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Все книги жанра",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/genres/25/books",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "genres",
+                "25",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Создание жанра",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Фантастика\", \"description\": \"Книги о будущем\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/v2/genres/store",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "genres",
+                "store"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Обновление жанра",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Научная фантастика\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/v2/genres/update/2",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "genres",
+                "update",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Удаление жанра",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/v2/genres/destroy/1",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "genres",
+                "destroy",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "URL",
+      "value": ""
+    }
+  ]
+}
