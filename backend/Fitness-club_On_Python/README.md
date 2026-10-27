@@ -54,21 +54,13 @@ club_project/
 
 ---
 
-## 🚀 Развёртывание и запуск
-
-### Вариант 1: У вас ещё ничего не установлено (с нуля)
-
-1. **Установите Git:** скачайте и установите с официального сайта [git-scm.com](https://git-scm.com/).
-2. **Установите Docker Desktop:** скачайте и установите [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-3. **Запустите Docker Desktop** и дождитесь завершения инициализации.
-
-### Вариант 2: Запуск проекта (шаг за шагом)
+## 🚀 Развёртывание и запуск (шаг за шагом)
 
 **1. Клонируйте репозиторий и перейдите в папку проекта:**
 
 ```bash
 git clone https://github.com/NovDanya/projects.git
-cd projects/backend/club_project
+cd projects/backend/Fitness-club_On_Python/club_project
 ```
 
 **2. Запустите сборку и контейнеры через Docker Compose:**
