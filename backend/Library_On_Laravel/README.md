@@ -193,4 +193,4 @@ php artisan serve
 
 ## 👤 Автор
 
-Данил (NovDanya) — Fullstack Developer
+Данил (NovDanya) — Backend / Fullstack Developer
