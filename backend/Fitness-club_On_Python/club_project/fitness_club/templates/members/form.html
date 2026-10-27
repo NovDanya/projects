@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование клиента</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #e5e7eb;
+            padding: 20px;
+            font-family: system-ui, sans-serif;
+        }
+
+        .card {
+            background: #141414;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #dc2626;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            background: #0f0f0f;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 5px rgba(220, 38, 38, 0.4);
+        }
+
+        button {
+            background: #dc2626;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background: #b91c1c;
+        }
+
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>✏️ Редактировать данные клиента</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <label>ФИО:</label>
+        <input type="text" name="full_name" value="{{ member.full_name }}" required>
+
+        <label>Телефон:</label>
+        <input type="tel" name="phone" value="{{ member.phone }}" required>
+
+        <button type="submit">Сохранить изменения</button>
+    </form>
+
+    <a href="{% url 'member_detail' member.pk %}">← Отмена</a>
+</div>
+</body>
+</html>

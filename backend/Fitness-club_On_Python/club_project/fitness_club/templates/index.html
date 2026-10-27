@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Фитнес Клуб - Панель</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --primary-red: #dc2626;
+            --dark-red: #7f1d1d;
+            --hover-red: #b91c1c;
+            --border: #333333;
+            --glow: rgba(220, 38, 38, 0.4);
+            --success: #166534;
+            --info: #1e3a8a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-main);
+            font-family: system-ui, sans-serif;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-red);
+            padding-left: 10px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .block {
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 6px;
+            background: var(--bg-card);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        input, select {
+            padding: 10px;
+            margin: 8px 0;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #0f0f0f;
+            color: var(--text-main);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 5px var(--glow);
+        }
+
+        button {
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .btn-add {
+            background: linear-gradient(to right, var(--primary-red), var(--hover-red));
+            color: white;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-add:hover {
+            background: var(--dark-red);
+            box-shadow: 0 2px 8px var(--glow);
+        }
+
+        .btn-restore {
+            background-color: var(--info);
+            color: white;
+            width: auto;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .btn-restore:hover {
+            background-color: #0f172a;
+        }
+
+        .btn-del {
+            background-color: var(--primary-red);
+            color: white;
+            width: auto;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .btn-del:hover {
+            background-color: #7f1d1d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1a0000;
+            color: var(--primary-red);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .status-active {
+            color: #4ade80;
+            background-color: #052e16;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #22c55e;
+        }
+
+        .status-left {
+            color: #f87171;
+            background-color: #2a0a0a;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #ef4444;
+        }
+
+        .price-display {
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-top: 10px;
+            display: block;
+            background: #1a0505;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px dashed var(--primary-red);
+            text-align: center;
+        }
+
+        .section-divider {
+            border-top: 2px solid var(--border);
+            margin: 15px 0;
+            padding-top: 15px;
+        }
+
+        .label-small {
+            font-size: 14px;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #141414 0%, #1a0000 100%);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid var(--primary-red);
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .stat-val {
+            font-size: 1.4em;
+            font-weight: bold;
+            display: block;
+            margin-top: 8px;
+            color: var(--primary-red);
+        }
+
+        .export-btns {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
+
+        .export-btns button {
+            background-color: #333;
+            color: white;
+            width: 45%;
+        }
+
+        .export-btns button:hover {
+            background-color: var(--primary-red);
+        }
+
+        details summary {
+            cursor: pointer;
+            color: #60a5fa;
+            font-weight: bold;
+            list-style: none;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary::after {
+            content: '+';
+            float: right;
+            font-weight: bold;
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .alert {
+            padding: 10px;
+            background: var(--dark-red);
+            border-left: 4px solid var(--primary-red);
+            margin-bottom: 15px;
+            border-radius: 4px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Административная Панель Фитнес-Клуба</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="block">
+        <h3>Статистика</h3>
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px;">
+            <div class="stat-box">Выручка Клуба <span class="stat-val">{{ stats.revenue }} RUB</span></div>
+            <div class="stat-box">Выручка Тренеров <span class="stat-val" style="color: #f97316;">{{ stats.trainers_earnings }} RUB</span></div>
+        </div>
+        <div style="margin-top: 20px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; border-top: 2px solid var(--border); padding-top: 15px;">
+             <div style="font-size: 16px;">Всего Клиентов: <strong>{{ stats.total_members }}</strong></div>
+             <div style="font-size: 16px;">Всего Тренеров: <strong>{{ stats.total_trainers }}</strong></div>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="block">
+            <h3>Регистрация Нового Клиента</h3>
+            <form action="{% url 'add_member' %}" method="post" onsubmit="return validateForm('new')">
+                {% csrf_token %}
+                <input type="text" name="full_name" placeholder="ФИО Клиента" required>
+                <input type="tel" name="phone" placeholder="Телефон (уникальный)" required>
+                <div class="section-divider">
+                    <span class="label-small">1. Тип Абонемента:</span>
+                    <select name="mem_type" id="new_mem_type" onchange="filterTrainersByType('new', this.value); calculateTotal('new');" required>
+                        <option value="" disabled selected>-- Выберите тип --</option>
+                        <option value="gym">Спортзал</option>
+                        <option value="pool">Бассейн</option>
+                        <option value="combo">Комбо (Зал + Бассейн)</option>
+                    </select>
+                </div>
+                <div class="section-divider">
+                    <span class="label-small">2. Срок Действия:</span>
+                    <select name="duration" id="new_duration" onchange="calculateTotal('new')" required>
+                        <option value="" disabled selected>-- Выберите срок --</option>
+                        <option value="Разовое">Разовое посещение (1 день)</option>
+                        <option value="1 месяц">1 Месяц</option>
+                        <option value="3 месяца">3 Месяца</option>
+                        <option value="6 месяцев">6 Месяцев</option>
+                        <option value="1 год">1 Год</option>
+                    </select>
+                </div>
+                <div class="section-divider">
+                    <span class="label-small">3. Персональный Тренер (Опционально):</span>
+                    <select name="trainer_id" id="new_trainer" onchange="calculateTotal('new')">
+                        <option value="">Без тренера</option>
+                        {% for t in trainers %}<option value="{{ t.id }}" data-spec="{{ t.specialization|lower }}">{{ t.name }} ({{ t.specialization }})</option>{% endfor %}
+                    </select>
+                </div>
+                <span id="new_total_price" class="price-display hidden">Итого к оплате: 0 RUB</span>
+                <button type="submit" class="btn-add">Зарегистрировать Клиента</button>
+            </form>
+        </div>
+
+        <div class="block">
+            <h3>Добавление Тренера</h3>
+            <form action="{% url 'add_trainer' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="ФИО Тренера (уникальное)" required>
+                <input type="text" name="spec" placeholder="Специализация" required>
+                <div class="section-divider">
+                    <span class="label-small">Стоимость услуг тренера:</span>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 5px;">
+                        <input type="number" step="0.01" name="p1" placeholder="1 мес." required>
+                        <input type="number" step="0.01" name="p3" placeholder="3 мес." required>
+                        <input type="number" step="0.01" name="p6" placeholder="6 мес." required>
+                        <input type="number" step="0.01" name="p12" placeholder="1 год" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-add">Добавить Тренера</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="block">
+        <h3>Клиенты</h3>
+        <table>
+            <thead><tr><th>ID</th><th>ФИО</th><th>Телефон</th><th>Статус</th><th>Управление</th></tr></thead>
+            <tbody>
+                {% for m in members %}
+                <tr>
+                    <td>{{ m.id }}</td>
+                    <td>{{ m.full_name }}</td>
+                    <td>{{ m.phone }}</td>
+                    <td>
+                        {% if m.status == 'Активен' %}<span class="status-active">Активен</span>
+                        {% else %}<span class="status-left">Архив</span>{% endif %}
+                    </td>
+                    <td>
+                        {% if m.status == 'Активен' %}
+                        <form action="{% url 'archive_member' m.id %}" method="post" style="display:inline;" onsubmit="return confirm('В архив?')">
+                            {% csrf_token %}<button type="submit" class="btn-del">В Архив</button>
+                        </form>
+                        {% else %}
+                        <details style="display:inline;">
+                            <summary>Восстановить</summary>
+                            <form action="{% url 'restore_member' m.id %}" method="post" onsubmit="return validateForm('restore_{{ m.id }}')" style="margin-top:10px; border:1px solid var(--border); padding:15px; background:#0f0f0f; border-radius:4px;">
+                                {% csrf_token %}
+                                <span class="label-small">Выберите новый абонемент:</span>
+                                <select name="mem_type" id="restore_{{ m.id }}_mem_type" onchange="filterTrainersByType('restore_{{ m.id }}', this.value); calculateTotal('restore_{{ m.id }}')" required style="width:100%; margin-bottom:8px;">
+                                    <option value="" disabled selected>Тип</option>
+                                    <option value="gym">Спортзал</option><option value="pool">Бассейн</option><option value="combo">Комбо</option>
+                                </select>
+                                <select name="duration" id="restore_{{ m.id }}_duration" onchange="calculateTotal('restore_{{ m.id }}')" required style="width:100%; margin-bottom:8px;">
+                                    <option value="" disabled selected>Срок</option>
+                                    <option value="Разовое">Разовое</option><option value="1 месяц">1 Месяц</option><option value="3 месяца">3 Месяца</option>
+                                    <option value="6 месяцев">6 Месяцев</option><option value="1 год">1 Год</option>
+                                </select>
+                                <select name="trainer_id" id="restore_{{ m.id }}_trainer" onchange="calculateTotal('restore_{{ m.id }}')" style="width:100%; margin-bottom:8px;">
+                                    <option value="">Без тренера</option>
+                                    {% for t in trainers %}<option value="{{ t.id }}" data-spec="{{ t.specialization|lower }}">{{ t.name }}</option>{% endfor %}
+                                </select>
+                                <span id="restore_{{ m.id }}_total_price" class="price-display hidden" style="font-size:12px; margin-bottom:8px;"></span>
+                                <button type="submit" class="btn-restore" style="width:100%;">Оплатить и Восстановить</button>
+                            </form>
+                        </details>
+                        {% endif %}
+                        <a href="{% url 'member_detail' m.id %}" style="color:#60a5fa; margin-left:8px; text-decoration:none;">👁 Подробнее</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="block">
+        <h3>Штат Тренеров</h3>
+        <table>
+            <thead><tr><th>ID</th><th>ФИО</th><th>Специализация</th><th>Ставки (1/3/6/12 мес)</th><th>Действия</th></tr></thead>
+            <tbody>
+                {% for t in trainers %}
+                <tr>
+                    <td>{{ t.id }}</td><td>{{ t.name }}</td><td>{{ t.specialization }}</td>
+                    <td>{{ t.price_1m }} / {{ t.price_3m }} / {{ t.price_6m }} / {{ t.price_1y }}</td>
+                    <td>
+                        <a href="{% url 'trainer_detail' t.id %}" style="color:#60a5fa; margin-right:8px; text-decoration:none;">👁</a>
+                        <a href="{% url 'trainer_update' t.id %}" style="color:#fbbf24; margin-right:8px; text-decoration:none;">✏️</a>
+                        <form action="{% url 'delete_trainer' t.id %}" method="post" style="display:inline;" onsubmit="return confirm('Удалить тренера?')">
+                            {% csrf_token %}<button type="submit" class="btn-del">Уволить</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+        <div class="block">
+        <h3>Активные Абонементы</h3>
+        <table>
+            <thead><tr><th>Клиент ID</th><th>Тип</th><th>Срок</th><th>Тренер ID</th><th>Стоимость</th><th>Действует до</th><th>Продление</th></tr></thead>
+            <tbody>
+                {% for s in subs %}
+                <tr>
+                    <td>{{ s.member_id }}</td>
+                    <td>{{ s.get_membership_type_display }}</td>
+                    <td>{{ s.duration }}</td>
+                    <td>{{ s.trainer.name|default:"-" }}</td>
+                    <td><strong>{{ s.total_price }} RUB</strong></td>
+                    <td>{{ s.end_date|date:"d.m.Y" }}</td>
+                    <td>
+                        <details style="display:inline;">
+                            <summary>Продлить</summary>
+                            <form action="{% url 'renew_sub' s.member_id %}" method="post" style="margin-top:10px; border:1px solid var(--border); padding:15px; background:#0f0f0f; border-radius:4px; width: 280px;">
+                                {% csrf_token %}
+
+                                <span class="label-small">Новый срок:</span>
+                                <select name="duration" id="renew_{{ s.id }}_duration" onchange="calculateRenewTotal('{{ s.id }}')" required style="width:100%; margin-bottom:8px;">
+                                    <option value="Разовое">Разовое</option>
+                                    <option value="1 месяц">1 Месяц</option>
+                                    <option value="3 месяца">3 Месяца</option>
+                                    <option value="6 месяцев">6 Месяцев</option>
+                                    <option value="1 год">1 Год</option>
+                                </select>
+
+                                <span class="label-small">Тип абонемента:</span>
+                                <select name="mem_type" id="renew_{{ s.id }}_mem_type" onchange="filterTrainersByType('renew_{{ s.id }}', this.value); calculateRenewTotal('{{ s.id }}')" required style="width:100%; margin-bottom:8px;">
+                                    <option value="gym">Спортзал</option>
+                                    <option value="pool">Бассейн</option>
+                                    <option value="combo">Комбо</option>
+                                </select>
+
+                                <span class="label-small">Тренер:</span>
+                                <select name="trainer_id" id="renew_{{ s.id }}_trainer" onchange="calculateRenewTotal('{{ s.id }}')" style="width:100%; margin-bottom:8px;">
+                                    <option value="">Без тренера</option>
+                                    {% for t in trainers %}<option value="{{ t.id }}" data-spec="{{ t.specialization|lower }}">{{ t.name }}</option>{% endfor %}
+                                </select>
+
+                                <span id="renew_{{ s.id }}_total_price" class="price-display hidden" style="font-size: 13px; margin-bottom: 8px;"></span>
+
+                                <small style="color:#9ca3af; display:block; margin-bottom:10px; font-size:11px; line-height: 1.3;">
+                                    * Скидка 10% применяется автоматически, если до окончания текущего абонемента осталось менее 30 дней.
+                                </small>
+
+                                <button type="submit" class="btn-add" style="width:100%; padding:8px;">Подтвердить продление</button>
+                            </form>
+                        </details>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:20px;">Нет активных абонементов</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="block export-btns">
+        <a href="{% url 'export_xml' %}"><button>Экспорт в XML</button></a>
+    </div>
+</div>
+
+<script>
+    const MEMBERSHIP_PRICES = {
+        "gym": {"Разовое": 1500, "1 месяц": 6000, "3 месяца": 12000, "6 месяцев": 18000, "1 год": 28000},
+        "pool": {"Разовое": 1500, "1 месяц": 5000, "3 месяца": 11000, "6 месяцев": 17000, "1 год": 30000},
+        "combo": {"Разовое": 2000, "1 месяц": 5000, "3 месяца": 13000, "6 месяцев": 23000, "1 год": 35000}
+    };
+
+    const TRAINER_KEYWORDS = {
+        "gym": ["силов", "кардио", "кросс", "фитнес", "тяжел", "гантел", "штанг", "бодибилд", "тренаж", "функц", "йога", "пилатес", "растяж", "спортзал"],
+        "pool": ["бассейн", "плаван", "аква", "водн", "нырян", "гидро", "синхро"]
+    };
+
+    // Данные о текущих абонементах для расчета скидки на фронтенде
+    // Формат: { sub_id: { end_date: "YYYY-MM-DD" } }
+    const CURRENT_SUBS_DATA = {
+        {% for s in subs %}
+            "{{ s.id }}": { end_date: "{{ s.end_date|date:'Y-m-d' }}" },
+        {% endfor %}
+    };
+
+    let trainerPricesCache = {};
+
+    function filterTrainersByType(prefix, memType) {
+        const trainerSelect = document.getElementById(prefix + '_trainer');
+        if (!trainerSelect) return;
+
+        const currentVal = trainerSelect.value;
+        const options = trainerSelect.querySelectorAll('option[data-spec]');
+
+        options.forEach(opt => {
+            if (opt.value === "") return;
+
+            const spec = (opt.getAttribute('data-spec') || '').toLowerCase();
+            let isVisible = false;
+
+            if (memType === 'combo' || memType === '') {
+                isVisible = true;
+            } else if (TRAINER_KEYWORDS[memType]) {
+                isVisible = TRAINER_KEYWORDS[memType].some(kw => spec.includes(kw));
+            } else {
+                isVisible = true;
+            }
+
+            opt.style.display = isVisible ? '' : 'none';
+
+            if (!isVisible && opt.value === currentVal) {
+                trainerSelect.value = '';
+            }
+        });
+    }
+
+    // Стандартный расчет (для новых клиентов и восстановления)
+    async function calculateTotal(prefix) {
+        const memTypeEl = document.getElementById(prefix + '_mem_type');
+        const durationEl = document.getElementById(prefix + '_duration');
+        const trainerSelect = document.getElementById(prefix + '_trainer');
+        const displayEl = document.getElementById(prefix + '_total_price');
+
+        if (!memTypeEl || !durationEl || !memTypeEl.value || !durationEl.value) {
+            if(displayEl) displayEl.classList.add('hidden');
+            return;
+        }
+
+        const memType = memTypeEl.value;
+        const duration = durationEl.value;
+        const trainerId = trainerSelect ? trainerSelect.value : '';
+
+        let basePrice = MEMBERSHIP_PRICES[memType][duration] || 0;
+        let trainerPrice = 0;
+
+        if (trainerId) {
+            if (!trainerPricesCache[trainerId]) {
+                try {
+                    const res = await fetch(`/api/trainer/prices/${trainerId}/`);
+                    trainerPricesCache[trainerId] = await res.json();
+                } catch (e) { console.error(e); }
+            }
+            if (trainerPricesCache[trainerId]) {
+                trainerPrice = duration === "Разовое"
+                    ? (trainerPricesCache[trainerId]["1 месяц"] || 0) / 4
+                    : (trainerPricesCache[trainerId][duration] || 0);
+            }
+        }
+
+        const total = basePrice + trainerPrice;
+        if (displayEl) {
+            displayEl.textContent = `Итого к оплате: ${total} RUB`;
+            displayEl.classList.remove('hidden');
+        }
+    }
+
+    // Специальный расчет для ПРОДЛЕНИЯ (учитывает скидку 10%)
+    async function calculateRenewTotal(subId) {
+        const prefix = 'renew_' + subId;
+        const memTypeEl = document.getElementById(prefix + '_mem_type');
+        const durationEl = document.getElementById(prefix + '_duration');
+        const trainerSelect = document.getElementById(prefix + '_trainer');
+        const displayEl = document.getElementById(prefix + '_total_price');
+
+        if (!memTypeEl || !durationEl || !memTypeEl.value || !durationEl.value) {
+            if(displayEl) displayEl.classList.add('hidden');
+            return;
+        }
+
+        const memType = memTypeEl.value;
+        const duration = durationEl.value;
+        const trainerId = trainerSelect ? trainerSelect.value : '';
+
+        let basePrice = MEMBERSHIP_PRICES[memType][duration] || 0;
+
+        // Проверка скидки
+        let hasDiscount = false;
+        if (CURRENT_SUBS_DATA[subId] && duration !== "Разовое") {
+            const endDateStr = CURRENT_SUBS_DATA[subId].end_date;
+            if (endDateStr) {
+                const endDate = new Date(endDateStr);
+                const today = new Date();
+                // Сбрасываем время для корректного сравнения дней
+                today.setHours(0,0,0,0);
+
+                const diffTime = endDate - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                if (diffDays >= 0 && diffDays < 30) {
+                    hasDiscount = true;
+                    basePrice = basePrice * 0.9; // Применяем скидку 10%
+                }
+            }
+        }
+
+        let trainerPrice = 0;
+        if (trainerId) {
+            if (!trainerPricesCache[trainerId]) {
+                try {
+                    const res = await fetch(`/api/trainer/prices/${trainerId}/`);
+                    trainerPricesCache[trainerId] = await res.json();
+                } catch (e) { console.error(e); }
+            }
+            if (trainerPricesCache[trainerId]) {
+                trainerPrice = duration === "Разовое"
+                    ? (trainerPricesCache[trainerId]["1 месяц"] || 0) / 4
+                    : (trainerPricesCache[trainerId][duration] || 0);
+            }
+        }
+
+        const total = basePrice + trainerPrice;
+        if (displayEl) {
+            let text = `Итого: ${Math.round(total)} RUB`;
+            if (hasDiscount) {
+                text += ` <span style="color:#4ade80; font-size:0.9em;">(Скидка 10%)</span>`;
+            }
+            displayEl.innerHTML = text;
+            displayEl.classList.remove('hidden');
+        }
+    }
+
+    function validateForm(prefix) {
+        const m = document.getElementById(prefix + '_mem_type')?.value;
+        const d = document.getElementById(prefix + '_duration')?.value;
+        if (!m || !d) { alert("Ошибка: Выберите тип абонемента и срок действия!"); return false; }
+        return true;
+    }
+</script>
+</body>
+</html>

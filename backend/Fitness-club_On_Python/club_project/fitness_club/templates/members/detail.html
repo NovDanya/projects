@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Детали клиента</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #e5e7eb;
+            padding: 20px;
+            font-family: system-ui, sans-serif;
+        }
+
+        .card {
+            background: #141414;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #dc2626;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #dc2626;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc2626;
+            padding-left: 10px;
+        }
+
+        .info {
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .info strong {
+            color: #e5e7eb;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 2px solid #333;
+            color: #9ca3af;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #222;
+        }
+
+        tr:hover td {
+            background: #1a1a1a;
+        }
+
+        .price {
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .status-active {
+            color: #4ade80;
+            background: #052e16;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #22c55e;
+            font-size: 12px;
+        }
+
+        .status-inactive {
+            color: #f87171;
+            background: #2a0a0a;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #ef4444;
+            font-size: 12px;
+        }
+
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #dc2626;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background: #b91c1c;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>👤 {{ member.full_name }}</h2>
+    <div class="info">
+        <strong>Телефон:</strong> {{ member.phone }} |
+        <strong>Статус:</strong> <span class="{% if member.status == 'Активен' %}status-active{% else %}status-inactive{% endif %}">{{ member.status }}</span> |
+        <strong>Дата регистрации:</strong> {{ member.created_at|date:"d.m.Y H:i" }}
+    </div>
+
+    <a href="{% url 'member_update' member.pk %}" class="btn">✏️ Редактировать</a>
+    <a href="/">← На главную</a>
+
+    <h3>Абонементы:</h3>
+    {% if subs %}
+    <table>
+        <thead>
+            <tr>
+                <th>Тип</th>
+                <th>Срок</th>
+                <th>Тренер</th>
+                <th>Итого</th>
+                <th>Действует до</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in subs %}
+            <tr>
+                <td>
+                    {% if s.membership_type == 'gym' %}Спортзал
+                    {% elif s.membership_type == 'pool' %}Бассейн
+                    {% else %}Комбо{% endif %}
+                </td>
+                <td>{{ s.duration }}</td>
+                <td>{{ s.trainer.name|default:"-" }}</td>
+                <td class="price">{{ s.total_price }} ₽</td>
+                <td>{{ s.end_date|date:"d.m.Y" }}</td>
+                <td>
+                    {% if s.is_active %}
+                        <span class="status-active">Активен</span>
+                    {% else %}
+                        <span class="status-inactive">Завершён</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="color: #666; font-style: italic;">Абонементов нет</p>
+    {% endif %}
+</div>
+</body>
+</html>
